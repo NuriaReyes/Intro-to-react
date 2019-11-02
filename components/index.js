@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import '../styles/app.scss';
-import Home from './pages/Home';
+import Events from './pages/events';
 
 class App extends Component {
     render() {
         return (
             <div className="app-wrapper">
-                <Home />
+                <Events />
             </div>
         );
     }
