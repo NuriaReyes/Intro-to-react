@@ -7,3 +7,7 @@ const client = axios.create({
 export const getEvents = () => {
     return client.get('event');
 };
+
+export const getEvent = (id) => {
+    return client.get(`event/${id}`);
+};

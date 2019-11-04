@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getEvents } from '../../services/event';
+import Event from '../event';
 
 class Events extends Component {
 
@@ -13,16 +14,24 @@ class Events extends Component {
 
     componentDidMount() {
         getEvents().then((response) => {
+            return response.data.data;
+        }).then((events) => {
             this.setState({
-                events: response.data.data,
+                events,
             });
         });
     }
 
     render() {
+        const { events } = this.state;
         return (
             <div>
-                Events
+                <h1>Events</h1>
+                {
+                    events.map((event, index) => {
+                        return <Event key={index} event={event} />;
+                    })
+                }
             </div>
         );
     }
