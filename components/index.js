@@ -7,10 +7,17 @@ import Week4 from './pages/week4';
 
 import { BrowserRouter as Router, Switch, Route, NavLink } from 'react-router-dom';
 
+export const ReactSchoolContext = React.createContext();
+
 class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { isLoggedIn: false };
+    }
+
     render() {
         return (
-            <>
+            <ReactSchoolContext.Provider value={this.state.isLoggedIn}>
                 <style>
                     {
                         `
@@ -39,7 +46,7 @@ class App extends Component {
                     </Route>
                     <Route exact path="/" render={() => <Events test="test" />} />
                 </Switch>
-            </>
+            </ReactSchoolContext.Provider>
         );
     }
 }
@@ -47,6 +54,7 @@ class App extends Component {
 // <Route exact <-- routes you to this only if the match is exact
 
 const component = <Router><App /></Router>;
+
 const container = document.getElementById('app');
 
 ReactDOM.render(component, container);
