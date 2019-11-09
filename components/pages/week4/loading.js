@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import withErrorHandler from './withErrorHandler';
 
 class Loading extends Component {
     render() {
@@ -9,4 +9,4 @@ class Loading extends Component {
     }
 }
 
-export default Loading;
+export default withErrorHandler(Loading);
