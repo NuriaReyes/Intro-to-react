@@ -11,3 +11,7 @@ export const getEvents = () => {
 export const getEvent = (id) => {
     return client.get(`event/${id}`);
 };
+
+export const postAtendee = (data) => {
+    return client.post('atendee', data);
+};

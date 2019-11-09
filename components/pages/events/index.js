@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { getEvents } from '../../services/event';
 import Event from '../event';
 
+import { withRouter } from 'react-router-dom';
+
 class Events extends Component {
 
     constructor(props) {
@@ -12,13 +14,12 @@ class Events extends Component {
         };
     }
 
-    componentDidMount() {
-        getEvents().then((response) => {
-            return response.data.data;
-        }).then((events) => {
-            this.setState({
-                events,
-            });
+    async componentDidMount() {
+        console.log(this.props);
+
+        const { data: { data } } = await getEvents();
+        this.setState({
+            events: data,
         });
     }
 
@@ -27,6 +28,7 @@ class Events extends Component {
         return (
             <div>
                 <h1>Events</h1>
+                <p>{this.props.test}</p>
                 {
                     events.map((event, index) => {
                         return <Event key={index} event={event} />;
@@ -37,4 +39,4 @@ class Events extends Component {
     }
 }
 
-export default Events;
+export default withRouter(Events);

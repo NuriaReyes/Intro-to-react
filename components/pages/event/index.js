@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; //use router to navigate URIs
 
 const Event = (props) => {
     const { event } = props;
@@ -10,7 +11,7 @@ const Event = (props) => {
             }
             <h2>{event.name}</h2>
             <p>{event.description}</p>
-            <a href={`#/events/${event.id}`}>Inscribirse!</a>
+            <Link to={`/events/${event.id}`}>Inscribirse</Link>
         </div >
     );
 };
